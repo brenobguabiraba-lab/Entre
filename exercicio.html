@@ -1,0 +1,127 @@
+<script>
+  function ehPrimo(n) {
+    if (n <= 1) return false;
+
+    for (let i = 2; i < n; i++) {
+        if (n % i === 0) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+let numeros = [1, 2, 3, 4];
+
+function somatorio(numeros) {
+    let soma = 0;
+
+    for (let i = 0; i < numeros.length; i++) {
+        soma = soma + numeros[i];
+    }
+
+    return soma;
+}
+
+
+function fibonacci(n) {
+    if (n === 0) return 0;
+    if (n === 1) return 1;
+
+    let a = 0;
+    let b = 1;
+    let resultado;
+
+    for (let i = 2; i <= n; i++) {
+        resultado = a + b;
+        a = b;
+        b = resultado;
+    }
+
+    return b;
+}
+
+function mdc(a, b) {
+    while (b !== 0) {
+        let resto = a % b;
+        a = b;
+        b = resto;
+    }
+
+    return a;
+}
+
+function quicksort(arr) {
+    if (arr.length <= 1) return arr;
+
+    let pivo = arr[0];
+    let menores = [];
+    let maiores = [];
+
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] <= pivo) {
+            menores.push(arr[i]);
+        } else {
+            maiores.push(arr[i]);
+        }
+    }
+
+    let resultado = quicksort(menores);
+    resultado.push(pivo);
+
+    let parteMaior = quicksort(maiores);
+    for (let i = 0; i < parteMaior.length; i++) {
+        resultado.push(parteMaior[i]);
+    }
+
+    return resultado;
+}
+
+function contagem(dados, N) {
+    let primeiro = dados[0];
+    let contador = 0;
+
+    for (let i = 0; i < dados.length; i++) {
+        if (dados[i] >= primeiro && dados[i] <= N) {
+            contador++;
+        }
+    }
+
+    return contador;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+</script>
