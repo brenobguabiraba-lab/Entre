@@ -1,5 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercícios JS</title>
+</head>
+<body>
+
+<h1>Resultados</h1>
+
+<div id="resultado"></div>
+
 <script>
-  function ehPrimo(n) {
+
+function ehPrimo(n) {
     if (n <= 1) return false;
 
     for (let i = 2; i < n; i++) {
@@ -11,18 +24,15 @@
     return true;
 }
 
-let numeros = [1, 2, 3, 4];
-
 function somatorio(numeros) {
     let soma = 0;
 
     for (let i = 0; i < numeros.length; i++) {
-        soma = soma + numeros[i];
+        soma += numeros[i];
     }
 
     return soma;
 }
-
 
 function fibonacci(n) {
     if (n === 0) return 0;
@@ -30,10 +40,9 @@ function fibonacci(n) {
 
     let a = 0;
     let b = 1;
-    let resultado;
 
     for (let i = 2; i <= n; i++) {
-        resultado = a + b;
+        let resultado = a + b;
         a = b;
         b = resultado;
     }
@@ -66,15 +75,11 @@ function quicksort(arr) {
         }
     }
 
-    let resultado = quicksort(menores);
-    resultado.push(pivo);
-
-    let parteMaior = quicksort(maiores);
-    for (let i = 0; i < parteMaior.length; i++) {
-        resultado.push(parteMaior[i]);
-    }
-
-    return resultado;
+    return [
+        ...quicksort(menores),
+        pivo,
+        ...quicksort(maiores)
+    ];
 }
 
 function contagem(dados, N) {
@@ -90,38 +95,27 @@ function contagem(dados, N) {
     return contador;
 }
 
+let resultado = document.getElementById("resultado");
 
+resultado.innerHTML += "<h2>1. Número Primo</h2>";
+resultado.innerHTML += "7 é primo? " + ehPrimo(7) + "<br><br>";
 
+resultado.innerHTML += "<h2>2. Somatório</h2>";
+resultado.innerHTML += "Soma = " + somatorio([1,2,3,4]) + "<br><br>";
 
+resultado.innerHTML += "<h2>3. Fibonacci</h2>";
+resultado.innerHTML += "Fibonacci de 8 = " + fibonacci(8) + "<br><br>";
 
+resultado.innerHTML += "<h2>4. MDC</h2>";
+resultado.innerHTML += "MDC(20,8) = " + mdc(20,8) + "<br><br>";
 
+resultado.innerHTML += "<h2>5. Quicksort</h2>";
+resultado.innerHTML += quicksort([5,3,8,1,2]).join(", ") + "<br><br>";
 
+resultado.innerHTML += "<h2>6. Contagem</h2>";
+resultado.innerHTML += contagem([1,2,3,4,5], 4);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
 </script>
+
+</body>
+</html>
