@@ -22,7 +22,7 @@ function divisao(a, b) {
 }
 
 app.get('/', (req, res) => {
-  res.send('Oi, mundo :-)');
+  res.send('oie');
 });
 
 app.post('/soma', (req, res) => {
@@ -80,7 +80,15 @@ app.post('/divisao', (req, res) => {
   });
 });
 
-const port = 3001;
+app.delete('/remover', (req, res) => {
+    const id = req.body.id; 
+    
+    res.json({
+        mensagem: `Registro com o ID ${id} foi deletado com sucesso!`
+    });
+});
+
+const port = 3000;
 
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);
